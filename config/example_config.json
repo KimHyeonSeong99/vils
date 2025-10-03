@@ -1,0 +1,37 @@
+{
+  "can": {
+    "interface": "socketcan",
+    "channel": "can0",
+    "bitrate": 500000,
+    "receive_own_messages": false,
+    "filters": [
+      { "can_id": 256, "can_mask": 2047, "extended": false }
+    ]
+  },
+  "udp": {
+    "host": "192.168.0.100",
+    "port": 4000
+  },
+  "include_raw_frame": true,
+  "signals": [
+    {
+      "name": "vehicle_speed",
+      "can_id": "0x100",
+      "start_bit": 0,
+      "length": 16,
+      "byte_order": "big",
+      "scale": 0.01,
+      "offset": 0.0
+    },
+    {
+      "name": "steering_angle",
+      "can_id": "0x101",
+      "start_bit": 16,
+      "length": 16,
+      "byte_order": "little",
+      "scale": 0.1,
+      "offset": -780.0,
+      "signed": true
+    }
+  ]
+}
