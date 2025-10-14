@@ -15,7 +15,7 @@ pip install python-can
 ## python exe 파일 생성하기
 
 ```bash
-pyinstaller `  --onefile `  --noconsole `  --clean `  --collect-all libTSCANAPI `  --add-data "x64\libTSCAN.dll;x64" `  --add-data "x64\libTSH.dll;x64" ` tosun_can_udp_ui.py
+pyinstaller --onefile --noconsole --clean --collect-all libTSCANAPI --add-data "libTSCANAPI\windows\x64\libTSCAN.dll;libTSCANAPI\windows\x64" --add-data "libTSCANAPI\windows\x64\libTSH.dll;libTSCANAPI\windows\x64" tosun_can_udp_ui.py
 ```
 
 - You must change the each lib file directory on your computer!
