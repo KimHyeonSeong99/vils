@@ -1,13 +1,26 @@
 # vils
 
-이 저장소에는 TOSUN CAN USB 장치로부터 CAN 프레임을 수집하고 필요한 정보를
-UDP로 전송하기 위한 간단한 Python 브리지 스크립트가 포함되어 있습니다.
+For send transimited CAN signal over UDP
 
-## 요구 사항
+## Requiremetn
 
-- Python 3.9 이상
-- [python-can](https://python-can.readthedocs.io/) 패키지
+- Over Python 3.9 
+- [python-can](https://python-can.readthedocs.io/) package
 
 ```bash
 pip install python-can
 ```
+
+## python exe 파일 생성하기
+
+'''bash
+pyinstaller `  --onefile `  --noconsole `  --clean `  --collect-all libTSCANAPI `  --add-data "libTSCANAPI\windows\x64\libTSCAN.dll;libTSCANAPI/windows/x64" `  --add-data "libTSCANAPI\windows\x64\libTSH.dll;libTSCANAPI/windows/x64" ` tosun_can_udp_ui.py
+'''
+
+An .exe file is generated in dist directory!
+
+### essential file
+- .dbc file (for signal define)
+
+### optional file
+- .conf file (for saving/loading to transmit signal CAN to UDP)
