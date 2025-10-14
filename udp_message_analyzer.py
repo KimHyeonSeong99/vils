@@ -53,6 +53,11 @@ def _parse_args() -> argparse.Namespace:
         action="store_true",
         help="Print summary statistics every 100 messages.",
     )
+    parser.add_argument(
+        "--print-raw",
+        action="store_true",
+        help="Always print the raw payload (JSON or otherwise) even if parsing fails.",
+    )
     return parser.parse_args()
 
 
@@ -147,7 +152,11 @@ def main() -> None:
             try:
                 decoded = json.loads(text)
             except json.JSONDecodeError:
-                print(f"[WARN] Invalid JSON payload from {addr}: {text[:200]} ...")
+                if args.print_raw:
+                    print(f"[WARN] Invalid JSON payload from {addr}: {text}")
+                else:
+                    preview = text if len(text) <= 200 else text[:200] + " ..."
+                    print(f"[WARN] Invalid JSON payload from {addr}: {preview}")
                 continue
 
             if args.filter_id is not None and decoded.get("id") != args.filter_id:
@@ -159,7 +168,8 @@ def main() -> None:
             if isinstance(can_id, int):
                 per_id[can_id] += 1
 
-            _print_payload(decoded, addr, text if args.raw else None, args.raw)
+            show_raw = args.raw or args.print_raw
+            _print_payload(decoded, addr, text if show_raw else None, show_raw)
 
             if args.stats and counter % 100 == 0:
                 elapsed = max(time.monotonic() - start_time, 1e-6)
