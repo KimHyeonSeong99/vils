@@ -17,7 +17,7 @@ pip install python-can
 pyinstaller `  --onefile `  --noconsole `  --clean `  --collect-all libTSCANAPI `  --add-data "libTSCANAPI\windows\x64\libTSCAN.dll;libTSCANAPI/windows/x64" `  --add-data "libTSCANAPI\windows\x64\libTSH.dll;libTSCANAPI/windows/x64" ` tosun_can_udp_ui.py
 ```
 
-You must change the each lib file directory on your computer!\\
+You must change the each lib file directory on your computer!\n
 An .exe file is generated in dist directory!
 
 ### essential file
