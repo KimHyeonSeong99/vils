@@ -6,6 +6,7 @@ For send transimited CAN signal over UDP
 
 - Over Python 3.9 
 - [python-can](https://python-can.readthedocs.io/) package
+- First unzip the x64.zip in libTSCANAPI/windows directory!
 
 ```bash
 pip install python-can
@@ -17,7 +18,6 @@ pip install python-can
 pyinstaller `  --onefile `  --noconsole `  --clean `  --collect-all libTSCANAPI `  --add-data "x64\libTSCAN.dll;x64" `  --add-data "x64\libTSH.dll;x64" ` tosun_can_udp_ui.py
 ```
 
-First unzip the x64.zip!
 You must change the each lib file directory on your computer!
 An .exe file is generated in dist directory!
 
